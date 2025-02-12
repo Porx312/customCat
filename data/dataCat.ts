@@ -11,7 +11,7 @@ export const accesories: Accesory = {
   hat: ["LuffyHat", "cap"],
   beard: ["seniorBeard", "mustache"],
   glasses: ["doflamingo"],
-  clothes: ["formalsuit"],
+  clothes: ["formalsuit", "RyanGosling"],
   items: ["mac"],
   hair: ["undefine"],
 };
