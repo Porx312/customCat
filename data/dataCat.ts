@@ -10,7 +10,7 @@ interface Accesory {
 export const accesories: Accesory = {
   hat: ["LuffyHat", "cap"],
   beard: ["seniorBeard", "mustache"],
-  glasses: ["doflamingo"],
+  glasses: ["doflamingo","sun","troll",'Glasses1','cine'],
   clothes: ["formalsuit", "RyanGosling"],
   items: ["mac"],
   hair: ["undefine"],
