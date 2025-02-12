@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    unoptimized: true, // Permite usar <img> sin que Next.js se queje
+  },
 };
 
 export default nextConfig;

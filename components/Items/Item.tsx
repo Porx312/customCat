@@ -1,13 +1,27 @@
-import Image from 'next/image'
-import React from 'react'
+import React from "react";
 
-const Item = ({accesory, classname, name, size}: {accesory: string, classname: string, name: string, size: number}) => {
+const Item = ({
+  accesory,
+  classname,
+  name,
+}: {
+  accesory: string;
+  classname: string;
+  name: string;
+}) => {
   return (
     <div className={`absolute ${classname} text-4xl font-bold text-blue-400`}>
-    {accesory == name ? '' : <Image alt={accesory} src={`/images/${name}/${accesory}.png`} width={size} height={size} />}
-      
+      {accesory == name ? (
+        ""
+      ) : (
+        <img
+          alt={accesory}
+          src={`/images/${name}/${accesory}.png`}
+          className={"object-contain"}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

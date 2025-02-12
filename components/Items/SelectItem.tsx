@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
-import { SelectContent, SelectTrigger, SelectValue, SelectItem } from '@/components/ui/select';
-import { Select } from '@radix-ui/react-select';
+import {
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from "@/components/ui/select";
+import { Select } from "@radix-ui/react-select";
 const SelectItemCat = ({
   item,
   items,
@@ -8,7 +12,7 @@ const SelectItemCat = ({
 }: {
   item: string;
   items: string[];
-  selectAccesorie: (value: string) => void
+  selectAccesorie: (value: string) => void;
 }) => {
   return (
     <>
@@ -28,7 +32,7 @@ const SelectItemCat = ({
   );
 };
 
- /*   <Select value={selectedBeard} onValueChange={setSelectedBeard}>
+/*   <Select value={selectedBeard} onValueChange={setSelectedBeard}>
             <SelectTrigger className="w-full border-2 border-black">
               <SelectValue placeholder="Barba" />
             </SelectTrigger>
@@ -37,4 +41,4 @@ const SelectItemCat = ({
               <SelectItem value="mostacho">mostacho</SelectItem>
             </SelectContent>
           </Select> */
-export default SelectItemCat
+export default SelectItemCat;

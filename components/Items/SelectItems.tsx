@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react'
-import SelectItemCat from './SelectItem'
-import { accesories } from '@/data/dataCat'
-import { useAccesoryStore } from '@/store/accesories/accesories.store'
+import useItem from "@/hooks/useItem";
+import SelectItemCat from "./SelectItem";
 
 const SelectItemsCat = () => {
-    //Item
-    const hat =  useAccesoryStore(state => state.hat)
-    const glasses =  useAccesoryStore(state => state.glasses)
-    //SelectItem
-    const SelectHat =  useAccesoryStore(state => state.SelectHat)
-    const SelectGlasses =  useAccesoryStore(state => state.SelectGlasses)
-
+  const { item } = useItem();
   return (
-    <>
-    <SelectItemCat  item={hat} items={accesories.hat} selectAccesorie={SelectHat} />
-    <SelectItemCat item={glasses} items={accesories.glasses} selectAccesorie={SelectGlasses} />
-    </>
-  )
-}
-    
-export default SelectItemsCat
+    <div className="flex gap-2 flex-col ">
+      {item.map((item, index) => (
+        <SelectItemCat
+          item={item.item}
+          items={item.items}
+          selectAccesorie={item.SetItem}
+          key={index}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default SelectItemsCat;
