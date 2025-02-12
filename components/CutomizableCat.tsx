@@ -21,18 +21,6 @@ const accessories = [
   "Ferris",
 ]; */
 
-const colors = [
-  "#98FB98", // light green
-  "#FFD700", // yellow
-  "#FFA500", // orange
-  "#00FF7F", // green
-  "#00BFFF", // blue
-  "#4B0082", // indigo
-  "#FF69B4", // pink
-  "#FF0000", // red
-  "#DC143C", // crimson
-  "#000000", // black
-];
 
 export default function CatCustomizer() {
   const [isSaving, setIsSaving] = useState(false);
