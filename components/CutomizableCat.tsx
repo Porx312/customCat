@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import html2canvas from "html2canvas";
-import { useAccesoryStore } from "@/store/accesories/accesories.store";
 import SelectItemsCat from "./Items/SelectItems";
 import PushItem from "./Items/PushItem";
 /* 
