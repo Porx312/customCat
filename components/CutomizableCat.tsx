@@ -1,13 +1,12 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 import html2canvas from "html2canvas"
-import Hat from "./accesories/Accesory"
-import Accesory from "./accesories/Accesory"
+import { useAccesoryStore } from "@/store/accesories/accesories.store"
+import Item from "./Items/Item"
+import SelectItemsCat from "./Items/SelectItems"
 
 const accessories = [
   "Balloons",
@@ -37,20 +36,18 @@ const colors = [
 ]
 
 export default function CatCustomizer() {
-  const [selectedHat, setSelectedHat] = useState("")
-  const [selectedBowtie, setSelectedBowtie] = useState("")
-  const [selectedAccessories, setSelectedAccessories] = useState<string[]>(["Balloons"])
-  const [selectedColor, setSelectedColor] = useState(colors[0])
   const [isSaving, setIsSaving] = useState(false)
   const dinoRef = useRef<HTMLDivElement>(null)
-
-  const handleAccessoryToggle = (accessory: string) => {
+    const hat =  useAccesoryStore(state => state.hat)
+    const glasses =  useAccesoryStore(state => state.glasses)
+  
+/*   const handleAccessoryToggle = (accessory: string) => {
     setSelectedAccessories((prev) =>
       prev.includes(accessory) ? prev.filter((a) => a !== accessory) : [...prev, accessory],
     )
   }
-
-  const handleRandomize = () => {
+ */
+ /*  const handleRandomize = () => {
     setSelectedHat("macdonal")
     setSelectedBowtie("lentes")
     setSelectedAccessories(["Balloons"])
@@ -63,7 +60,7 @@ export default function CatCustomizer() {
     setSelectedAccessories([])
     setSelectedColor(colors[0])
   }
-
+ */
   const saveDino = async () => {
     if (!dinoRef.current) return
 
@@ -113,21 +110,20 @@ export default function CatCustomizer() {
               <X className="h-4 w-4" />
             </Button>
           </div>
-
+          <SelectItemsCat/>
           {/* Hat selector */}
-          <Select value={selectedHat} onValueChange={setSelectedHat}>
+        {/*   <Select value={selectedHat} onValueChange={setSelectedHat}>
             <SelectTrigger className="w-full border-2 border-black">
               <SelectValue placeholder="Gorra" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="macdonal">macdonal</SelectItem>
-              <SelectItem value="crown">Crown</SelectItem>
-              <SelectItem value="cap">Cap</SelectItem>
+              <SelectItem value="gorra">gorra</SelectItem>
+              <SelectItem value="luffy">luffy</SelectItem>
             </SelectContent>
-          </Select>
+          </Select> */}
 
           {/* Color picker for hat */}
-          <div className="flex gap-1">
+       {/*    <div className="flex gap-1">
             {colors.map((color) => (
               <button
                 key={color}
@@ -136,22 +132,20 @@ export default function CatCustomizer() {
                 onClick={() => setSelectedColor(color)}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* Bowtie selector */}
-          <Select value={selectedBowtie} onValueChange={setSelectedBowtie}>
+        {/*   <Select value={selectedBowtie} onValueChange={setSelectedBowtie}>
             <SelectTrigger className="w-full border-2 border-black">
               <SelectValue placeholder="lentes" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="lentes">Doflamingo</SelectItem>
-              <SelectItem value="tie">Tie</SelectItem>
-              <SelectItem value="scarf">Scarf</SelectItem>
             </SelectContent>
-          </Select>
+          </Select> */}
 
           {/* Color picker for bowtie */}
-          <div className="flex gap-1">
+        {/*   <div className="flex gap-1">
             {colors.map((color) => (
               <button
                 key={color}
@@ -160,10 +154,10 @@ export default function CatCustomizer() {
                 onClick={() => setSelectedColor(color)}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* Accessories */}
-          <div className="grid grid-cols-2 gap-4">
+        {/*   <div className="grid grid-cols-2 gap-4">
             {accessories.map((accessory) => (
               <div key={accessory} className="flex items-center space-x-2">
                 <Checkbox
@@ -179,10 +173,10 @@ export default function CatCustomizer() {
                 </label>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Color picker for accessories */}
-          <div className="flex gap-1">
+       {/*    <div className="flex gap-1">
             {colors.map((color) => (
               <button
                 key={color}
@@ -191,21 +185,19 @@ export default function CatCustomizer() {
                 onClick={() => setSelectedColor(color)}
               />
             ))}
-          </div>
-
+          </div> */}
           {/* Action buttons */}
-          <div className="grid grid-cols-2 gap-4">
+         {/*  <div className="grid grid-cols-2 gap-4">
             <Button variant="outline" className="w-full border-2 border-black" onClick={handleRandomize}>
               Randomize all
             </Button>
             <Button variant="outline" className="w-full border-2 border-black" onClick={handleClear}>
               Clear all
             </Button>
-          </div>
-
+          </div> */}
           {/* Save button */}
           <Button
-            className="w-full bg-green-300 hover:bg-green-400 text-black border-2 border-black"
+            className="w-full bg-purple-400 hover:bg-purple-500 text-black border-2 border-black"
             onClick={saveDino}
             disabled={isSaving}
           >
@@ -216,8 +208,10 @@ export default function CatCustomizer() {
         {/* Dino preview */}
         <div className="w-1/2 flex items-center justify-center">
           <div className="relative" ref={dinoRef}>
-          <Accesory accesory={selectedHat} name="Hat" classname="-top-1 left-32"/>
-          <Accesory accesory={selectedBowtie} name="lentes" classname="top-20 left-32"/>
+          <Item accesory={hat} name="hat" classname="-top-1 left-24 z-40" size={260}/>
+        <Item accesory={glasses} name="glasses" classname="top-20 left-32 z-20" size={200}/>
+         {/*  <Accesory accesory={selectedBeard} name="barba" classname="top-[9.8rem] left-[10.3rem] z-10" size={120}/>
+          <Accesory accesory={selectedClothes} name="ropa" classname="top-[7.2rem] left-[4.6rem]" size={300}/>  */}
 
             <img
               src="/images/cat.jpg"
